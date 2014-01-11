@@ -1,5 +1,6 @@
 require "value-domain-ddns/version"
 
 module ValueDomainDdns
-  # Your code goes here...
+  require 'value-domain-ddns/core'
+  require 'value-domain-ddns/config'
 end

@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'value/domain/ddns/version'
+require 'value-domain-ddns/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "value-domain-ddns"
-  spec.version       = Value::Domain::Ddns::VERSION
+  spec.version       = ValueDomainDdns::VERSION
   spec.authors       = ["daimatz"]
   spec.email         = ["dai@daimatz.net"]
   spec.description   = %q{value-domain ddns script}
@@ -18,6 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency "thor", ">= 0.17.0"
+
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end

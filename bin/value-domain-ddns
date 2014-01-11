@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.expand_path("../../lib", __FILE__)
+
+require "value-domain-ddns"
+
+require 'rubygems'
+require 'thor'
+
+class ValueDomainDdns::Cli < Thor
+  options :domain => :string, :password => :string,
+    :hostname => :string, :ip => :string
+  options :config => :string
+  desc "sync", "update and sync ddns record"
+  long_desc <<-EOD
+    Update and sync ddns record.
+    Default config file is `./config.json`.
+    If other fields are set, it overwrites config file's value.
+  EOD
+  def sync
+    config_file = options[:config] || "./config.json"
+    config = ValueDomainDdns::Config.load(config_file)
+    ddns = ValueDomainDdns::Core.new(config)
+    ddns.sync()
+  end
+end
+
+ValueDomainDdns::Cli.start(ARGV)
