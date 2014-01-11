@@ -26,5 +26,10 @@ describe ValueDomainDdns::Core do
     end
   end
 
-
+  describe '#get_ip' do
+    it 'succeed' do
+      regex = /^([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])\.([01]?\d\d?|2[0-4]\d|25[0-5])$/
+      expect(ValueDomainDdns::Core.new({}).get_ip).to match(regex)
+    end
+  end
 end

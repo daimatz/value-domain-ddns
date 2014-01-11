@@ -25,7 +25,7 @@ class ValueDomainDdns::Cli < Thor
       STDERR.puts "domain, password, hostname are required."
       exit
     end
-    ddns.get_ip if !config[:ip]
+    config[:ip] = ddns.get_ip if !config[:ip]
     ddns.sync()
   end
 end
