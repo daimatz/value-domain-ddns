@@ -21,6 +21,11 @@ class ValueDomainDdns::Cli < Thor
     config_file = options[:config] || "./config.json"
     config = ValueDomainDdns::Config.load(config_file)
     ddns = ValueDomainDdns::Core.new(config)
+    if !ddns.validate
+      STDERR.puts "domain, password, hostname are required."
+      exit
+    end
+    ddns.get_ip if !config[:ip]
     ddns.sync()
   end
 end
