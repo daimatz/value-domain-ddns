@@ -1,24 +1,35 @@
 # Value::Domain::Ddns
 
-TODO: Write a gem description
+value-domain ddns script
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'value-domain-ddns'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install value-domain-ddns
+```sh
+gem install value-domain-ddns
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+write `config.json` to settings and put it into current directory.
+
+```json
+{
+  "domain": "example.com",
+  "password": "example-password",
+  "hostname": "example"
+}
+```
+
+and then execute
+
+```sh
+value-domain-ddns sync
+```
+
+to execute syncing.
+
+if `--config` option passed, read it.
+`--domain`, `--password`, `--hostname`, `--ip` are also available.
 
 ## Contributing
 
