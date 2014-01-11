@@ -26,7 +26,11 @@ class ValueDomainDdns::Cli < Thor
       exit
     end
     config[:ip] = ddns.get_ip if !config[:ip]
-    ddns.sync()
+    params = ddns.submit_params
+    params["p"] = '******'
+    puts "update to #{ValueDomainDdns::SUBMIT_BASE_URL} with params:"
+    p params
+    puts ddns.sync()
   end
 end
 
